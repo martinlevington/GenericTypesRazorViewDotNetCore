@@ -1,0 +1,19 @@
+﻿@model GenericTypesRazorViewDotNetCore.Models.ItemsViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Form</h1>
+
+    <form asp-controller="Home" asp-action="Index" method="post">
+        @{
+            foreach (var value in Model.Values)
+            {
+                @await Component.InvokeAsync("PropertyValue", new { propertyValue = value.Value, propertyType = value.TypeValue })
+            }
+        }
+    </form>
+
+</div>
